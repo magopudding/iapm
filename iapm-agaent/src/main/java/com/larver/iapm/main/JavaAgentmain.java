@@ -1,6 +1,6 @@
 package com.larver.iapm.main;
 
-import com.larver.iapm.assist.JavaAssistClassFileTransformer;
+import com.larver.iapm.assist.JavassistClassFileTransformer;
 import java.lang.instrument.Instrumentation;
 
 /**
@@ -10,11 +10,15 @@ import java.lang.instrument.Instrumentation;
  * @Date: 2019/8/19 17:12
  * @Version 1.0
  **/
-public class JavaAgaentmain {
+public class JavaAgentmain {
 
-	public static void agaentmain(String args, Instrumentation instr){
+	public static void premain(String args, Instrumentation instr){
 		System.out.println("Args is "+ args);
 		System.out.println("Begin to retansformClasses");
-		instr.addTransformer(new JavaAssistClassFileTransformer(),true);
+		instr.addTransformer(new JavassistClassFileTransformer());
+	}
+
+	public static void main(String[] args) {
+		
 	}
 }
